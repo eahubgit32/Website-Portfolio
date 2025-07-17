@@ -1,0 +1,31 @@
+/* Basic global styling tweaks */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f9fafb;
+    color: #111827;
+}
+
+/* Link styling */
+a {
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    opacity: 0.8;
+}
+
+/* Navbar logo/title */
+nav div:first-child {
+    color: #1e3a8a;
+}
+
+/* Section headings */
+h1 {
+    color: #1e3a8a;
+}
+
+/* Project card hover effect */
+.project-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}

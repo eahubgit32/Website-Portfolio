@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>View Certifications | Eury Azucena</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-in {
+      animation: fadeInUp 1s ease-out;
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-b from-[#001f3f] to-black text-white min-h-screen">
+
+  <!-- Navbar -->
+  <nav class="bg-[#001a33] shadow p-4 flex justify-between items-center">
+    <div class="text-xl font-bold text-white !text-white">Eury Azucena</div>
+    <div class="space-x-4">
+      <a href="index.html" class="hover:text-blue-400">Home</a>
+      <a href="about.html" class="hover:text-blue-400">About</a>
+      <a href="projects.html" class="hover:text-blue-400">Projects</a>
+      <a href="credentials.html" class="hover:text-blue-400">Credentials</a>
+      <a href="resume.html" class="hover:text-blue-400">Resume</a>
+      <a href="contact.html" class="hover:text-blue-400">Contact</a>
+    </div>
+  </nav>
+
+  <!-- Certification Display Section -->
+  <section class="max-w-6xl mx-auto p-8 mt-8 fade-in">
+    <h1 class="text-4xl font-bold mb-8 text-center text-blue-300">View Certification</h1>
+
+    <div id="certificationImage" class="grid grid-cols-1 gap-8 fade-in">
+      <!-- Images or PDFs will be injected here -->
+    </div>
+  </section>
+
+  <script>
+    const hash = window.location.hash.substring(1).toLowerCase();
+
+    const container = document.getElementById('certificationImage');
+
+    const data = {
+      'ibm': [
+        { type: 'image', src: 'assets/images/certifications/IBM/1.jpg' }
+      ],
+      'introcyber': [
+        { type: 'image', src: 'assets/images/certifications/Intro to CyberSecurity/1.jpg' }
+      ],
+      'forage': [
+        { type: 'image', src: 'assets/images/certifications/CyberSecurity Job/1.jpg' }
+      ],
+      'csharp': [
+        { type: 'image', src: 'assets/images/certifications/Csharp/1.jpg' }
+      ],
+      'java': [
+        { type: 'image', src: 'assets/images/certifications/JavaScript/1.jpg' },
+        { type: 'image', src: 'assets/images/certifications/JavaScript/2.jpg' }
+      ],
+      'ojt': [
+        { type: 'image', src: 'assets/images/certifications/OJT/1.jpg' }
+      ]
+    };
+
+    if (data[hash]) {
+      let content = '';
+      data[hash].forEach(item => {
+        if (item.type === 'image') {
+          content += `
+            <div class="bg-white p-2 rounded-lg shadow-lg">
+              <img src="${item.src}" alt="${hash}" class="rounded w-full max-h-[90vh] object-contain">
+            </div>`;
+        } else if (item.type === 'pdf') {
+          content += `
+            <embed src="${item.src}" type="application/pdf" class="w-full h-[90vh] rounded-lg shadow-lg bg-white">`;
+        }
+      });
+      container.innerHTML = content;
+    } else {
+      container.innerHTML = `<p class="text-xl text-center text-red-400">⚠️ No certificate found for this selection.</p>`;
+    }
+  </script>
+
+</body>
+</html>
